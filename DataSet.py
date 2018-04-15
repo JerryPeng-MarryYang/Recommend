@@ -39,10 +39,25 @@ def splitdata_d(dataset, m=10, k=0, seed=10):
     return train, test
 
 
+def popu(train):
+    pop = dict()
+    for user in train.keys():
+        for item in train[user]:
+            if item not in pop:
+                pop[item] = 0.0
+            pop[item] += 1
+    return pop
 
 if __name__ == '__main__':
     print('This is DataSet File. Pleaser put down your weapons '
           'and put up your hands')
+
+    dataset = openfile('ratings.csv')
+    train, test = splitdata_d(dataset)
+    pop = popu(train)
+    print(train.keys())
+    for line in pop.items():
+        print(line)
 
 
 
