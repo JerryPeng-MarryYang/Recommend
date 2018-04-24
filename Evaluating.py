@@ -32,21 +32,18 @@ def coverage(train, test, recommend):
     return len(re) / (len(all) * 1.0)
 
 
-def popularity(pop, recommend):
-    # pop = dict()
-    # for user in train.keys():
-    #     for item in train[user]:
-    #         if item not in pop:
-    #             pop[item] = 0.0
-    #         pop[item] += 1
-
+def popularity(train, recommend):
+    pop = dict()
+    for user in train.keys():
+        for item in train[user]:
+            if item not in pop:
+                pop[item] = 0.0
+            pop[item] += 1
     ret = 0
     n = 0
-
     for user in recommend.keys():
         for item in recommend[user].keys():
             ret = math.log(1 + pop[item])
             n += 1
-
     ret /= (n * 1.0)
     return ret
