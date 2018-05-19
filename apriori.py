@@ -1,7 +1,4 @@
-import pandas as pd
 import DataSet
-from pandas import DataFrame
-import sys
 from collections import defaultdict
 
 dataset = DataSet.openfile('ratings.csv')
@@ -16,7 +13,7 @@ for user in train.keys():
 
 def find_frequent_set(train, lastset, min_support):
     counts = defaultdict(int)
-    tag = defaultdict(int)
+    #tag = defaultdict(int)
     for reviews in train.values():
         tag = defaultdict(int)
         for itemset in lastset:
@@ -59,11 +56,11 @@ candidate_rules = defaultdict(float)
 
 for itemset, num in frequent_itemsets[k].items():
     for x, cur_frequent_itemsets in frequent_itemsets.items():
-        if x == 4:
+        if x == k:
             continue
         for it, n in cur_frequent_itemsets.items():
             conf = num * 1.0 / n
-            if  conf >= min_conf:
+            if conf >= min_conf:
                 if it.issubset(itemset):
                     conclusion = itemset - it
                     candidate_rules[(it, conclusion)] = conf

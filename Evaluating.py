@@ -46,4 +46,4 @@ def popularity(train, recommend):
             ret = math.log(1 + pop[item])
             n += 1
     ret /= (n * 1.0)
-    return ret
+    return ret * 1000

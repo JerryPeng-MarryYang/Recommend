@@ -54,10 +54,6 @@ if __name__ == '__main__':
 
     dataset = openfile('ratings.csv')
     train, test = splitdata_d(dataset)
-    pop = popu(train)
-    print(train.keys())
-    for line in pop.items():
-        print(line)
 
 
 
